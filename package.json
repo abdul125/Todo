@@ -1,0 +1,24 @@
+{
+  "name": "todo_list_app",
+  "version": "1.0.0",
+  "description": "keeping tracking of my tasks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdul125/Todo.git"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript",
+    "to-do"
+  ],
+  "author": "Abdulrahman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abdul125/Todo/issues"
+  },
+  "homepage": "https://github.com/abdul125/Todo#readme"
+}
