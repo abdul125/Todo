@@ -1,0 +1,14 @@
+#todo {
+    margin: auto;
+    width: 40%;
+    border: 5px solid #FFFF00;
+    padding: 10px;    
+    background: #5F85DB;
+    color: #fff;
+  }
+#todo-form {
+text-align: center;
+margin: auto;
+display: block;
+
+}  
