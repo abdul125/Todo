@@ -11,4 +11,11 @@ text-align: center;
 margin: auto;
 display: block;
 
-}  
+}
+table, th, td{
+  border: 1px solid black;
+  width: auto;
+  list-style-type:none;
+  width:max-contents;
+
+}
