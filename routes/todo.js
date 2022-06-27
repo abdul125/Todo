@@ -26,15 +26,33 @@ app.get("/",(req,res)=>{
     })
 });
 
-app.post("/",(req,res)=>{
-    console.log(req.method)
-    // let newTask=todoModel(req.body);
+app.post("/:task",(req,res)=>{
+    const userTask = req.body
 
+    console.log(req.method+" method "+Object.values(req.body))
+    console.log(JSON.stringify(userTask),"=====",req.body.task)
+    console.log((res))
+
+    todoModel.create(userTask, function (err, post) {
+        if (err) return next(err);
+        console.log('added'+ userTask + "response")
+        res.json(post);
+        
+
+      });
+    
+
+  
 });
 
-app.delete("/",(req,res)=>{
-    console.log(req.method, " ___ ")
-    res.send("<h1>DELETE TO-DO<h1>")
+app.delete("/:id",(req,res)=>{
+    console.log(req.method, " ___ ************************** "+req.params.id+"\n\n\n")
+    todoModel.findOneAndDelete({_id:req.params.id }, function (err, task) {
+        if (err) throw err
+            console.log("id got completed: ", task);
+    });
+
+    
 });
 
 app.put("/",(req,res)=>{

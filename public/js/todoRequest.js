@@ -1,17 +1,43 @@
-let taskFieldValue=document.getElementById('task');
+let xhr = new XMLHttpRequest();
 
-function deleteAction(){
-    console.log(taskFieldValue.value+"  -----"+typeof(taskFieldValue)+" "+taskFieldValue.length)
-    alert(`You Delete Tasks Successfully !${taskFieldValue.value}`);
-    console.log('deleete..... '+taskFieldValue.value)
+// fetching
+
+function deleteAction()
+{
+    let datasetValue= this.dataset.task;
+    console.log("  x "+ datasetValue)
+    // alert(`You Delete Tasks Successfully !${datasetValue}`);
+    xhr.open("DELETE", `/${datasetValue}`, true);
+    xhr.send(datasetValue);
 }
 
 function addAction(){
-    console.log(taskFieldValue.value+" ---- "+typeof(taskFieldValue.value)+" * "+taskFieldValue.value.length);
-    alert('You Added Tasks Successfully !'+ taskFieldValue.value);
-    console.log('add..... '+taskFieldValue.value)
+    let taskFieldValue=document.getElementById("task").value
+    // alert('You Added Tasks Successfully !'+ taskFieldValue);
+    console.log('adding..... '+taskFieldValue)
+    // let params = 'orem=ipsum&name=binny';
+    xhr.open('POST', "/"+taskFieldValue, true);
+    //Send the proper header information along with the request
+    // xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader("Content-type", "application/json");
 
+    xhr.onreadystatechange = function() {//Call a function when the state changes.
+        if(xhr.readyState == 4 && xhr.status == 200) {
+            // alert(xhr.responseText);
+            console.log(xhr.responseText)
+        }
+    }
+    console.log(`sending task value .... `+taskFieldValue)
+    let userTodo={
+      task:taskFieldValue
+    }
+    xhr.send(JSON.stringify(userTodo));
 }
-// document.getElementById('submit-task').onclick(addAction)
+
 document.getElementById('submit-task').addEventListener('click',addAction)
-document.getElementById('delete-task').addEventListener('click',deleteAction)
+document.querySelectorAll('button#delete-task').forEach(function(el){
+    // console.log(item.dataset.task)
+
+    console.log(" element "+el);
+    el.addEventListener("click",deleteAction)
+})

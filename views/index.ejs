@@ -8,20 +8,26 @@
         <table>
             <tr >
                 <th colspan="3">
-                <from id="todo-form">
+                <from id="todo-form" method="POST" action="/">
                     <h2>To-do web-application</h2>
-                    <input type="text" id="task" placeholder="add tasks" required />
+                    <input type="text" id="task" name="taskName" placeholder="add tasks" required />
                     <button type="submit" id="submit-task">Add</button>
-                </from>
+                <!-- </from> -->
+
                 </th>
             </tr>
             <!-- the above only the form -->
             <% tasks.forEach(function(task){ %>
             <tr>
-                   <td class="item"><%= task["task"] %></td>
-                   <td><button type="submit" id="delete-task">Delete</button></td>
+                   <td class="item">
+                    <%= task["task"] %>
+                    </td>
+                   <td>
+                    <button id="delete-task" type="submit" data-task="<%= task._id %>"> Delete</button>
+                   </td>
            </tr>
            <% }); %>
+        </from>
 
         </table>
 

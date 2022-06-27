@@ -7,6 +7,12 @@ let app=express()
 
 app.set("view engine","ejs");
 app.use('/public/', express.static('./public'));
+//response as Json
+app.use(express.json()); 
+
+//Parse x-www-form-urlencoded request into req.body
+app.use(express.urlencoded({ extended: true }));     
+
 
 //handling routers 
 todoRouters(app)
