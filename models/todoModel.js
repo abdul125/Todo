@@ -1,7 +1,11 @@
-var mongoose = require('mongoose');
+const mongoose=require("mongoose");
+let dbURL = "mongodb://localhost:27017/todo";
+mongoose.connect(dbURL);
 
-var todoSchema = new mongoose.Schema({
-  name: String,
-});
-
-module.exports = mongoose.model('todo', todoSchema);
+let todoSchema= new mongoose.Schema(
+    {
+        task:{type:String, require:true}
+    },
+    { collection: 'todo' }
+    );
+module.exports=mongoose.model("todo",todoSchema)

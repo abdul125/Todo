@@ -1,17 +1,4 @@
-const mongoose=require("mongoose");
-let dbURL = "mongodb://localhost:27017/todo";
-mongoose.connect(dbURL);
-
-let todoSchema= new mongoose.Schema(
-    {
-        task:{type:String, require:true}
-    },
-    { collection: 'todo' }
-    );
-
-let todoModel=mongoose.model("todo",todoSchema)
-
-
+const todoModel=require("../models/todoModel.js");
 module.exports=function(app){
 // 
 const log=console.log
@@ -43,8 +30,6 @@ app.delete("/:id",(req,res)=>{
         if (err) throw err
             log("id got completed: ", task);
     });
-
-    
 });
 
 }
