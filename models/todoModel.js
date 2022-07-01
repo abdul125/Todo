@@ -1,5 +1,5 @@
 const mongoose=require("mongoose");
-let dbURL = "mongodb://localhost:27017/todo";
+let dbURL = "mongodb://mongo:27017/todo";
 mongoose.connect(dbURL);
 
 let todoSchema= new mongoose.Schema(
